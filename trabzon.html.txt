@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Formam Premium — Trabzonspor</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f5f5f7;--white:#fff;--black:#1d1d1f;--gray:#6e6e73;
+  --border:rgba(0,0,0,0.08);--gold:#C9A84C;--team:#7A1731;--team2:#0090D4;
+}
+html{scroll-behavior:smooth;width:100%;overflow-x:hidden;}
+body{font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--black);overflow-x:hidden;width:100%;max-width:100vw;position:relative;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;height:52px;background:rgba(245,245,247,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 16px;}
+.nav-back{display:flex;align-items:center;gap:4px;font-size:15px;color:#0071e3;text-decoration:none;-webkit-tap-highlight-color:transparent;}
+.nav-back svg{width:8px;height:13px;stroke:#0071e3;fill:none;stroke-width:2.5;stroke-linecap:round;}
+.nav-title{font-size:15px;font-weight:600;}
+.cart-btn{position:relative;width:36px;height:36px;border-radius:50%;background:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 6px rgba(0,0,0,0.1);-webkit-tap-highlight-color:transparent;}
+.cart-btn svg{width:18px;height:18px;stroke:var(--black);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.cart-badge{position:absolute;top:-2px;right:-2px;width:16px;height:16px;background:#0071e3;border-radius:50%;font-size:9px;font-weight:700;color:#fff;display:none;align-items:center;justify-content:center;}
+.cart-badge.show{display:flex;}
+
+/* HERO — fotoğraf */
+.hero{position:relative;height:56vw;min-height:240px;max-height:380px;overflow:hidden;background:var(--team);}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:top;filter:brightness(0.45);transform:scale(1.04);animation:zoomIn 1.2s cubic-bezier(0.25,0.46,0.45,0.94) forwards;}
+@keyframes zoomIn{to{transform:scale(1);}}
+.hero-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:0 20px 22px;}
+.hero-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:5px;animation:fadeUp 0.7s ease 0.3s both;}
+.hero-title{font-size:32px;font-weight:700;letter-spacing:-0.5px;color:#fff;line-height:1.05;margin-bottom:3px;animation:fadeUp 0.7s ease 0.45s both;}
+.hero-sub{font-size:13px;color:rgba(255,255,255,0.6);animation:fadeUp 0.7s ease 0.6s both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+
+/* TICKER */
+.ticker{background:var(--white);border-bottom:1px solid var(--border);padding:9px 0;overflow:hidden;white-space:nowrap;}
+.ticker-track{display:inline-flex;animation:tick 20s linear infinite;}
+.ticker-item{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);padding:0 20px;display:flex;align-items:center;gap:10px;}
+.ticker-dot{width:3px;height:3px;background:var(--gold);border-radius:50%;}
+@keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* PROMISE PILLS */
+.promises{display:flex;gap:8px;padding:14px 16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.promises::-webkit-scrollbar{display:none;}
+.promise-pill{flex-shrink:0;background:var(--white);border-radius:980px;padding:7px 13px;font-size:12px;font-weight:500;display:flex;align-items:center;gap:5px;box-shadow:0 1px 4px rgba(0,0,0,0.08);white-space:nowrap;}
+
+/* KATALOG */
+.section-header{padding:20px 16px 12px;}
+.section-tag{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:3px;font-weight:500;}
+.section-title{font-size:22px;font-weight:700;letter-spacing:-0.4px;}
+
+/* 2 kolonlu grid */
+.catalog{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 12px 12px;}
+
+.prod-card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,0.07);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform 0.15s;}
+.prod-card:active{transform:scale(0.97);}
+.prod-img-wrap{position:relative;aspect-ratio:3/4;overflow:hidden;background:#eee;}
+.prod-img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+.prod-badge{position:absolute;top:8px;left:8px;background:var(--gold);color:#fff;font-size:9px;font-weight:700;padding:3px 8px;border-radius:980px;}
+.prod-info{padding:10px 10px 12px;}
+.prod-name{font-size:13px;font-weight:600;letter-spacing:-0.2px;margin-bottom:1px;line-height:1.3;}
+.prod-price{font-size:15px;font-weight:700;margin-top:4px;}
+.prod-price-sub{font-size:10px;color:var(--gray);}
+.prod-incele{margin-top:8px;width:100%;padding:8px;border-radius:10px;background:var(--black);color:#fff;border:none;font-size:12px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+
+/* CAMPAIGN */
+.campaign{margin:4px 12px 12px;padding:22px;border-radius:18px;background:var(--black);color:#fff;position:relative;overflow:hidden;}
+.campaign::after{content:'2+1';position:absolute;right:-8px;top:50%;transform:translateY(-50%);font-size:100px;font-weight:900;color:rgba(255,255,255,0.04);pointer-events:none;line-height:1;}
+.camp-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.camp-title{font-size:26px;font-weight:700;letter-spacing:-0.5px;line-height:1.1;margin-bottom:7px;}
+.camp-title span{color:var(--gold);}
+.camp-desc{font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:14px;}
+.camp-opts{display:flex;flex-direction:column;gap:8px;}
+.camp-opt{background:rgba(255,255,255,0.06);border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.1);}
+.camp-opt-price{font-size:20px;font-weight:700;margin-bottom:2px;}
+.camp-opt-label{font-size:11px;color:rgba(255,255,255,0.45);}
+.camp-opt-badge{display:inline-block;margin-top:6px;background:var(--gold);color:#000;font-size:9px;font-weight:700;padding:3px 9px;border-radius:980px;}
+
+/* INFO */
+.info-section{padding:0 12px 20px;display:flex;flex-direction:column;gap:10px;}
+.info-card{background:var(--white);border-radius:16px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);}
+.info-card-title{font-size:15px;font-weight:600;margin-bottom:12px;}
+.info-steps{display:flex;flex-direction:column;gap:10px;}
+.info-step{display:flex;gap:10px;align-items:flex-start;}
+.info-step-num{width:22px;height:22px;border-radius:50%;flex-shrink:0;background:var(--team);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.info-step-text{font-size:12px;color:var(--gray);line-height:1.5;padding-top:2px;}
+
+footer{text-align:center;padding:20px 16px;border-top:1px solid var(--border);font-size:12px;color:var(--gray);line-height:2;}
+.footer-logo{font-size:14px;font-weight:600;color:var(--black);margin-bottom:3px;}
+
+/* CANLI SAYAÇ */
+.live-bar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:#fff;border-bottom:1px solid var(--border);font-size:13px;color:var(--gray);}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+.live-num{font-weight:700;color:var(--black);}
+
+/* KAMPANYA BANNER (hero altı) */
+.camp-goto{margin:12px;border-radius:16px;overflow:hidden;background:var(--black);padding:16px;display:flex;align-items:center;justify-content:space-between;gap:12;text-decoration:none;-webkit-tap-highlight-color:transparent;}
+.camp-goto-left{}
+.camp-goto-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.camp-goto-title{font-size:18px;font-weight:700;color:#fff;line-height:1.2;}
+.camp-goto-sub{font-size:12px;color:rgba(255,255,255,0.45);margin-top:3px;}
+.camp-goto-btn{background:var(--gold);color:#000;font-size:13px;font-weight:700;padding:10px 16px;border-radius:980px;white-space:nowrap;flex-shrink:0;}
+
+/* ÜRÜN SAYACI */
+.prod-viewer{font-size:11px;color:var(--gray);display:flex;align-items:center;gap:4px;margin-top:4px;}
+.prod-viewer svg{flex-shrink:0;}
+
+/* STOK UYARISI */
+.stock-badge{display:inline-flex;align-items:center;gap:4px;background:#fff0f0;color:#dc2626;font-size:10px;font-weight:700;padding:3px 8px;border-radius:980px;margin-top:4px;}
+.stock-dot{width:5px;height:5px;border-radius:50%;background:#dc2626;animation:pulse 1.5s infinite;}
+
+/* FAVORİ BUTONU */
+.fav-btn{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.92);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 1px 4px rgba(0,0,0,0.15);-webkit-tap-highlight-color:transparent;transition:transform 0.2s;z-index:2;}
+.fav-btn:active{transform:scale(0.85);}
+
+/* BEDEN REHBERİ */
+.size-guide-btn{font-size:11px;color:#0071e3;background:none;border:none;cursor:pointer;padding:0;margin-bottom:10px;-webkit-tap-highlight-color:transparent;text-decoration:underline;}
+.size-guide-overlay{position:fixed;inset:0;z-index:900;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity 0.25s;}
+.size-guide-overlay.open{opacity:1;pointer-events:all;}
+.size-guide-box{background:#fff;border-radius:24px 24px 0 0;width:100%;padding:0 0 env(safe-area-inset-bottom,16px);transform:translateY(100%);transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);}
+.size-guide-overlay.open .size-guide-box{transform:translateY(0);}
+.size-guide-handle{width:36px;height:4px;background:#ddd;border-radius:2px;margin:12px auto 0;}
+.size-guide-inner{padding:16px;}
+.size-guide-title{font-size:18px;font-weight:700;margin-bottom:4px;}
+.size-guide-sub{font-size:13px;color:#6e6e73;margin-bottom:14px;}
+.size-table{width:100%;border-collapse:collapse;font-size:13px;}
+.size-table th{background:#f5f5f7;padding:9px 6px;text-align:center;font-weight:600;font-size:11px;}
+.size-table td{padding:9px 6px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.06);}
+.size-table tr:last-child td{border-bottom:none;}
+.size-guide-note{font-size:12px;color:#6e6e73;margin-top:12px;line-height:1.6;background:#f5f5f7;padding:10px;border-radius:10px;}
+.size-guide-close{width:100%;padding:14px;border-radius:14px;background:#1d1d1f;color:#fff;border:none;font-size:15px;font-weight:600;cursor:pointer;margin-top:14px;}
+
+/* SSS */
+.sss-section{padding:0 12px 12px;}
+.sss-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,0.06);}
+.sss-header{font-size:15px;font-weight:600;padding:16px;border-bottom:1px solid rgba(0,0,0,0.06);}
+.sss-item{border-bottom:1px solid rgba(0,0,0,0.06);}
+.sss-item:last-child{border-bottom:none;}
+.sss-q{width:100%;padding:14px 16px;background:none;border:none;text-align:left;font-size:13px;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;-webkit-tap-highlight-color:transparent;color:#1d1d1f;}
+.sss-icon{font-size:12px;color:#6e6e73;transition:transform 0.25s;flex-shrink:0;margin-left:8px;}
+.sss-item.open .sss-icon{transform:rotate(180deg);}
+.sss-a{font-size:13px;color:#6e6e73;line-height:1.7;padding:0 16px 14px;display:none;}
+.sss-item.open .sss-a{display:block;}
+
+/* SON SİPARİŞ BİLDİRİMİ */
+.order-notif{position:fixed;bottom:20px;left:12px;right:12px;z-index:350;background:#fff;border-radius:14px;padding:10px 14px;box-shadow:0 4px 20px rgba(0,0,0,0.15);display:flex;align-items:center;gap:10px;transform:translateY(120px);opacity:0;transition:all 0.45s cubic-bezier(0.25,0.46,0.45,0.94);pointer-events:none;}
+.order-notif.show{transform:translateY(0);opacity:1;}
+.order-notif-img{width:36px;height:46px;object-fit:cover;object-position:top;border-radius:7px;flex-shrink:0;}
+.order-notif-info{flex:1;}
+.order-notif-name{font-size:12px;font-weight:600;line-height:1.3;}
+.order-notif-detail{font-size:11px;color:#6e6e73;margin-top:1px;}
+.order-notif-close{background:none;border:none;font-size:14px;color:#6e6e73;cursor:pointer;padding:2px;}
+.support-title{font-size:15px;font-weight:600;margin-bottom:2px;}
+.support-sub{font-size:12px;color:var(--gray);margin-bottom:12px;}
+.support-btns{display:flex;gap:8px;}
+.support-btn{flex:1;padding:11px;border-radius:12px;font-size:13px;font-weight:600;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;-webkit-tap-highlight-color:transparent;}
+.support-wa{background:#25D366;color:#fff;}
+.support-ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;}
+
+/* ===== MODAL TAM EKRAN ===== */
+.modal-overlay{position:fixed;inset:0;z-index:500;background:#fff;opacity:0;pointer-events:none;transition:opacity 0.25s;display:flex;flex-direction:column;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+
+/* Üst bar */
+.modal-bar{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:linear-gradient(to bottom,rgba(0,0,0,0.45),transparent);}
+.modal-close-btn{width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,0.4);border:none;color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;}
+.modal-bar-title{font-size:13px;font-weight:600;color:#fff;max-width:60%;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.modal-bar-space{width:32px;}
+
+/* Görsel slider */
+.modal-slider{width:100%;background:#f0f0f0;flex-shrink:0;overflow:hidden;touch-action:pan-y;}
+.modal-slider-track{display:flex;transition:transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94);will-change:transform;}
+.modal-slide{flex-shrink:0;width:100%;}
+.modal-slide img{width:100%;display:block;object-fit:cover;object-position:top;}
+
+/* Thumbnail + dots */
+.modal-thumbs-row{display:flex;align-items:center;gap:8px;padding:10px 16px 4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0;}
+.modal-thumbs-row::-webkit-scrollbar{display:none;}
+.modal-thumb{width:52px;height:52px;border-radius:10px;overflow:hidden;flex-shrink:0;cursor:pointer;border:2px solid transparent;transition:border-color 0.15s;-webkit-tap-highlight-color:transparent;}
+.modal-thumb.active{border-color:var(--black);}
+.modal-thumb img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.modal-dots{display:flex;gap:5px;align-items:center;margin-left:auto;flex-shrink:0;}
+.modal-dot{width:5px;height:5px;border-radius:50%;background:rgba(0,0,0,0.15);border:none;cursor:pointer;padding:0;transition:all 0.15s;}
+.modal-dot.active{background:var(--black);transform:scale(1.4);}
+
+/* Info scroll alanı */
+.modal-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px 16px 32px;}
+.modal-name{font-size:19px;font-weight:700;letter-spacing:-0.3px;margin-bottom:2px;}
+.modal-sub-text{font-size:13px;color:var(--gray);margin-bottom:8px;}
+.modal-price{font-size:26px;font-weight:700;margin-bottom:1px;}
+.modal-price-note{font-size:12px;color:var(--gray);margin-bottom:14px;}
+.mdivider{height:1px;background:var(--border);margin:12px 0;}
+
+.size-label{font-size:13px;font-weight:600;margin-bottom:8px;}
+.size-hint{font-size:11px;font-weight:400;color:var(--gray);}
+.sizes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.size-btn{width:52px;height:52px;border-radius:12px;border:1.5px solid var(--border);background:transparent;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.15s;color:var(--black);-webkit-tap-highlight-color:transparent;}
+.size-btn:active{transform:scale(0.92);}
+.size-btn.sel{border-color:var(--black);background:var(--black);color:#fff;}
+
+/* Seçilen bedenler */
+.selected-sizes{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.sel-size-row{display:flex;align-items:center;justify-content:space-between;background:var(--bg);border-radius:12px;padding:10px 14px;}
+.sel-size-name{font-size:14px;font-weight:600;}
+.sel-size-qty{display:flex;align-items:center;background:var(--white);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08);}
+.sel-size-qb{width:36px;height:36px;background:transparent;border:none;font-size:18px;cursor:pointer;color:var(--black);display:flex;align-items:center;justify-content:center;}
+.sel-size-qv{width:32px;text-align:center;font-size:14px;font-weight:700;}
+.sel-size-del{background:none;border:none;color:var(--gray);font-size:14px;cursor:pointer;padding:4px 6px;margin-left:4px;}
+
+/* Açıklama */
+.modal-desc{font-size:13px;color:var(--gray);line-height:1.7;margin-top:10px;}
+
+/* Özellikler */
+.modal-features{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px;}
+.modal-feature{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--gray);background:var(--bg);padding:8px 10px;border-radius:10px;}
+
+.qty-label{font-size:13px;font-weight:600;margin-bottom:8px;}
+.qty-wrap{display:flex;align-items:center;margin-bottom:14px;width:fit-content;background:var(--bg);border-radius:14px;overflow:hidden;}
+.qty-btn{width:46px;height:46px;background:transparent;border:none;font-size:22px;cursor:pointer;color:var(--black);display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;}
+.qty-val{width:40px;text-align:center;font-size:17px;font-weight:600;}
+
+.add-btn{width:100%;padding:16px;border-radius:14px;background:var(--black);color:#fff;border:none;font-size:16px;font-weight:600;cursor:pointer;margin-bottom:8px;-webkit-tap-highlight-color:transparent;transition:opacity 0.15s;}
+.add-btn:active{opacity:0.75;}
+.add-note-text{font-size:12px;color:var(--gray);text-align:center;}
+
+/* ===== SEPET ===== */
+.cart-overlay{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,0.45);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity 0.25s;}
+.cart-overlay.open{opacity:1;pointer-events:all;}
+.cart-panel{position:fixed;right:0;top:0;bottom:0;width:min(400px,100vw);background:var(--white);z-index:650;display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);}
+.cart-panel.open{transform:translateX(0);}
+.cart-head{padding:16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.cart-head-title{font-size:17px;font-weight:600;}
+.cart-head-close{width:28px;height:28px;border-radius:50%;background:var(--bg);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gray);}
+.cart-items{flex:1;overflow-y:auto;padding:12px 16px;}
+.cart-empty{text-align:center;padding:60px 0;}
+.cart-empty-icon{font-size:40px;margin-bottom:10px;}
+.cart-empty-text{font-size:14px;color:var(--gray);}
+.cart-item{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--border);}
+.ci-img{width:60px;height:76px;object-fit:cover;object-position:top;border-radius:8px;flex-shrink:0;}
+.ci-info{flex:1;}
+.ci-name{font-size:13px;font-weight:600;margin-bottom:2px;line-height:1.3;}
+.ci-size{font-size:11px;color:var(--gray);margin-bottom:7px;}
+.ci-row{display:flex;justify-content:space-between;align-items:center;}
+.ci-price{font-size:15px;font-weight:700;}
+.ci-actions{display:flex;align-items:center;gap:6px;}
+.ci-qty{display:flex;align-items:center;background:var(--bg);border-radius:8px;overflow:hidden;}
+.ci-qb{width:28px;height:28px;background:transparent;border:none;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--black);}
+.ci-qv{width:24px;text-align:center;font-size:13px;font-weight:600;}
+.ci-del{background:none;border:none;color:var(--gray);font-size:16px;cursor:pointer;padding:4px;}
+.camp-bar{background:#fff8e6;border-radius:10px;padding:10px 12px;margin:8px 0;font-size:12px;color:#8a6000;line-height:1.5;}
+.cart-footer{padding:12px 16px;border-top:1px solid var(--border);}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.ct-label{font-size:13px;color:var(--gray);}
+.ct-val{font-size:22px;font-weight:700;}
+.cart-checkout-btn{width:100%;padding:16px;border-radius:14px;background:var(--black);color:#fff;border:none;font-size:16px;font-weight:600;cursor:pointer;margin-bottom:6px;}
+.cart-note{font-size:11px;color:var(--gray);text-align:center;line-height:1.6;}
+
+/* ===== CHECKOUT ===== */
+.checkout-overlay{position:fixed;inset:0;z-index:700;background:rgba(0,0,0,0.55);backdrop-filter:blur(10px);display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity 0.25s;}
+.checkout-overlay.open{opacity:1;pointer-events:all;}
+.checkout-box{background:var(--white);border-radius:24px 24px 0 0;width:100%;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);padding-bottom:env(safe-area-inset-bottom,16px);}
+.checkout-overlay.open .checkout-box{transform:translateY(0);}
+.checkout-handle{width:36px;height:4px;background:#ddd;border-radius:2px;margin:12px auto 0;}
+.checkout-inner{padding:20px 16px;}
+.checkout-title{font-size:22px;font-weight:700;margin-bottom:4px;}
+.checkout-sub{font-size:14px;color:var(--gray);margin-bottom:18px;}
+.order-summary{background:var(--bg);border-radius:14px;padding:14px;margin-bottom:18px;}
+.os-title{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--gray);margin-bottom:8px;}
+.os-item{display:flex;justify-content:space-between;font-size:13px;color:var(--gray);padding:2px 0;}
+.os-total{display:flex;justify-content:space-between;padding-top:10px;margin-top:8px;border-top:1px solid var(--border);}
+.os-tl{font-size:13px;font-weight:500;}
+.os-tv{font-size:18px;font-weight:700;}
+.form-group{margin-bottom:13px;}
+.form-label{font-size:12px;font-weight:600;margin-bottom:5px;display:block;}
+.form-label-req{color:#e55;font-size:11px;}
+.form-label-opt{font-weight:400;color:var(--gray);font-size:11px;}
+.form-input{width:100%;padding:14px;border-radius:12px;border:1.5px solid var(--border);background:var(--bg);font-size:16px;color:var(--black);outline:none;transition:border-color 0.2s;font-family:inherit;}
+.form-input:focus{border-color:var(--black);}
+.form-input::placeholder{color:#bbb;}
+.form-hint{font-size:11px;color:#8a6000;margin-top:5px;line-height:1.5;padding:8px 10px;background:#fff8e6;border-radius:8px;}
+.submit-btn{width:100%;padding:16px;border-radius:14px;background:var(--black);color:#fff;border:none;font-size:16px;font-weight:600;cursor:pointer;margin-top:6px;transition:opacity 0.2s;}
+.submit-btn:disabled{opacity:0.5;}
+.wa-order-btn{width:100%;padding:14px;border-radius:14px;background:#25D366;color:#fff;border:none;font-size:15px;font-weight:600;cursor:pointer;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px;-webkit-tap-highlight-color:transparent;}
+
+/* ÖDEME SEÇENEKLERİ */
+.payment-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:8px;}
+.payment-opt{display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;border:1.5px solid var(--border);cursor:pointer;transition:all 0.15s;-webkit-tap-highlight-color:transparent;}
+.payment-opt.selected{border-color:var(--black);background:rgba(0,0,0,0.03);}
+.payment-opt-icon{font-size:22px;flex-shrink:0;}
+.payment-opt-info{flex:1;}
+.payment-opt-title{font-size:14px;font-weight:600;}
+.payment-opt-sub{font-size:11px;color:var(--gray);margin-top:1px;}
+.payment-opt-check{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
+.payment-opt.selected .payment-opt-check{background:var(--black);border-color:var(--black);color:#fff;font-size:11px;}
+.payment-opt.selected .payment-opt-check::after{content:'✓';}
+.payment-warning{font-size:12px;color:#8a4400;background:#fff3e0;border-radius:10px;padding:10px 12px;line-height:1.6;margin-top:4px;}
+/* TOPLU SİPARİŞ */
+.bulk-notice{background:#f0f8ff;border-radius:10px;padding:10px 12px;margin:8px 0;font-size:12px;color:#0055aa;line-height:1.6;}
+.success-screen{display:none;text-align:center;padding:40px 16px;}
+.success-screen.show{display:block;}
+.success-icon{font-size:56px;margin-bottom:14px;}
+.success-title{font-size:24px;font-weight:700;margin-bottom:8px;}
+.success-desc{font-size:14px;color:var(--gray);line-height:1.7;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back">
+    <svg viewBox="0 0 8 13"><polyline points="7,1 1,6.5 7,12"/></svg>
+    Geri
+  </a>
+  <div class="nav-title">Trabzonspor</div>
+  <button class="cart-btn" onclick="openCart()">
+    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <span class="cart-badge" id="cartBadge">0</span>
+  </button>
+</nav>
+
+<div class="hero">
+  <img class="hero-img" src="https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454753/IMG_0439_nvnq84.heic" alt="Trabzonspor">
+  <div class="hero-content">
+    <div class="hero-tag">Trabzonspor · Fan Store</div>
+    <div class="hero-title">Premium Forma</div>
+    <div class="hero-sub">Nakış işlemeli · Kapıda ödeme</div>
+  </div>
+</div>
+
+<!-- CANLI SAYAÇ -->
+<div class="live-bar">
+  <div class="live-dot"></div>
+  <span class="live-num" id="liveCount">0</span>
+  <span>kişi şu an bu sayfayı görüntülüyor</span>
+</div>
+
+<!-- KAMPANYA GEÇIŞ BANNER -->
+<a href="kampanya.html" class="camp-goto">
+  <div class="camp-goto-left">
+    <div class="camp-goto-tag">🎁 Aktif Kampanya</div>
+    <div class="camp-goto-title">2 Al 1 Hediye</div>
+    <div class="camp-goto-sub">4 farklı takımdan seçim yapabilirsiniz</div>
+  </div>
+  <div class="camp-goto-btn">Katıl →</div>
+</a>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Şeffaf Kargo<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Kapıda Ödeme<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Nakış İşlemeli<span class="ticker-dot"></span></span>
+    <span class="ticker-item">2 Al 1 Hediye<span class="ticker-dot"></span></span>
+    <span class="ticker-item">2–3 İş Günü<span class="ticker-dot"></span></span>
+    <span class="ticker-item">2 Gün İade<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Şeffaf Kargo<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Kapıda Ödeme<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Nakış İşlemeli<span class="ticker-dot"></span></span>
+    <span class="ticker-item">2 Al 1 Hediye<span class="ticker-dot"></span></span>
+    <span class="ticker-item">2–3 İş Günü<span class="ticker-dot"></span></span>
+    <span class="ticker-item">2 Gün İade<span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<div class="promises">
+  <div class="promise-pill"><span>📦</span> Şeffaf Kargo</div>
+  <div class="promise-pill"><span>💳</span> Kapıda Ödeme</div>
+  <div class="promise-pill"><span>🧵</span> Nakış Kalitesi</div>
+  <div class="promise-pill"><span>⚡</span> Hızlı Teslimat</div>
+  <div class="promise-pill"><span>↩️</span> 2 Gün İade</div>
+</div>
+
+<div class="section-header">
+  <div class="section-tag">Trabzonspor Koleksiyonu</div>
+  <div class="section-title">2025 Modelleri</div>
+</div>
+
+<div class="catalog">
+  <div class="prod-card" onclick="openModal(0)">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454753/IMG_0439_nvnq84.heic" alt="TS 61 Tasarım">
+      <div class="prod-badge">Yeni</div>
+      <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,0)" title="Favorilere ekle">🤍</button>
+    </div>
+    <div class="prod-info">
+      <div class="prod-name">TS 61 Tasarım</div>
+      <div class="prod-price">690 ₺</div>
+      <div class="prod-price-sub">Kargo dahil</div>
+      <div class="stock-badge"><div class="stock-dot"></div> Son 4 adet!</div>
+      <div class="prod-viewer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span class="viewer-count"></span> kişi inceliyor</div>
+    </div>
+  </div>
+  <div class="prod-card" onclick="openModal(1)">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454754/IMG_0463_hpcu7n.heic" alt="TS Adidas Tasarım">
+      <div class="prod-badge">Çok Satan</div>
+      <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,1)" title="Favorilere ekle">🤍</button>
+    </div>
+    <div class="prod-info">
+      <div class="prod-name">TS Adidas Tasarım</div>
+      <div class="prod-price">690 ₺</div>
+      <div class="prod-price-sub">Kargo dahil</div>
+      <div class="stock-badge"><div class="stock-dot"></div> Son 6 adet!</div>
+      <div class="prod-viewer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span class="viewer-count"></span> kişi inceliyor</div>
+    </div>
+  </div>
+  <div class="prod-card" onclick="openModal(2)">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454753/IMG_0448_f1riun.heic" alt="TS Puma Tasarım">
+      <div class="prod-badge">Yeni</div>
+      <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,2)" title="Favorilere ekle">🤍</button>
+    </div>
+    <div class="prod-info">
+      <div class="prod-name">TS Puma Tasarım</div>
+      <div class="prod-price">690 ₺</div>
+      <div class="prod-price-sub">Kargo dahil</div>
+      <div class="stock-badge"><div class="stock-dot"></div> Son 7 adet!</div>
+      <div class="prod-viewer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span class="viewer-count"></span> kişi inceliyor</div>
+    </div>
+  </div>
+  <div class="prod-card" onclick="openModal(3)">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://res.cloudinary.com/dzfiyamng/image/upload/v1784650414/IMG_1905_ssaebc.jpg" alt="TS Çubuklu Forma">
+      <div class="prod-badge">Yeni</div>
+      <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,3)" title="Favorilere ekle">🤍</button>
+    </div>
+    <div class="prod-info">
+      <div class="prod-name">TS Çubuklu Forma</div>
+      <div class="prod-price">690 ₺</div>
+      <div class="prod-price-sub">Kargo dahil</div>
+      <div class="stock-badge"><div class="stock-dot"></div> Son 6 adet!</div>
+      <div class="prod-viewer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span class="viewer-count"></span> kişi inceliyor</div>
+    </div>
+  </div>
+  <div class="prod-card" onclick="openModal(4)">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://res.cloudinary.com/dzfiyamng/image/upload/v1784650412/IMG_1906_r8nx5n.jpg" alt="TS Siyah Forma">
+      <div class="prod-badge">Popüler</div>
+      <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,4)" title="Favorilere ekle">🤍</button>
+    </div>
+    <div class="prod-info">
+      <div class="prod-name">TS Siyah Forma</div>
+      <div class="prod-price">690 ₺</div>
+      <div class="prod-price-sub">Kargo dahil</div>
+      <div class="stock-badge"><div class="stock-dot"></div> Son 5 adet!</div>
+      <div class="prod-viewer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span class="viewer-count"></span> kişi inceliyor</div>
+    </div>
+  </div>
+  <div class="prod-card" onclick="openModal(5)">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://res.cloudinary.com/dzfiyamng/image/upload/v1784650412/IMG_1907_b4swrp.jpg" alt="TS Bordo Forma">
+      <div class="prod-badge">Yeni</div>
+      <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,5)" title="Favorilere ekle">🤍</button>
+    </div>
+    <div class="prod-info">
+      <div class="prod-name">TS Bordo Forma</div>
+      <div class="prod-price">690 ₺</div>
+      <div class="prod-price-sub">Kargo dahil</div>
+      <div class="stock-badge"><div class="stock-dot"></div> Son 8 adet!</div>
+      <div class="prod-viewer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span class="viewer-count"></span> kişi inceliyor</div>
+    </div>
+  </div>
+</div>
+
+<div class="campaign">
+  <div class="camp-tag">Aktif Kampanya</div>
+  <div class="camp-title">2 Al <span>1 Hediye</span></div>
+  <div class="camp-desc">Sepetinde 2 forma olduğunda 3. forma otomatik hediye. Kargo dahil, kapıda ödeme.</div>
+  <div class="camp-opts">
+    <div class="camp-opt"><div class="camp-opt-price">690 ₺</div><div class="camp-opt-label">1 Forma · Kargo dahil</div></div>
+    <div class="camp-opt"><div class="camp-opt-price">1.300 ₺</div><div class="camp-opt-label">2 Forma · Kargo dahil</div><div class="camp-opt-badge">+ 1 Forma Hediye 🎁</div></div>
+  </div>
+</div>
+
+<div class="info-section">
+  <div class="info-card">
+    <div class="info-card-title">📦 Şeffaf Kargo Nasıl Çalışır?</div>
+    <div class="info-steps">
+      <div class="info-step"><div class="info-step-num">1</div><div class="info-step-text">Aynı gün şeffaf paket ile kargoya verilir.</div></div>
+      <div class="info-step"><div class="info-step-num">2</div><div class="info-step-text">2–3 iş günü içinde kapınıza gelir, ürünü şeffaf paketten görebilirsiniz.</div></div>
+      <div class="info-step"><div class="info-step-num">3</div><div class="info-step-text">İnceleyip nakit veya kart ile kapıda ödeme yaparsınız.</div></div>
+    </div>
+  </div>
+  <div class="info-card">
+    <div class="info-card-title">↩️ İade Politikası</div>
+    <div class="info-steps">
+      <div class="info-step"><div class="info-step-num">1</div><div class="info-step-text">Teslimattan sonraki 2 gün içinde bize bildirin.</div></div>
+      <div class="info-step"><div class="info-step-num">2</div><div class="info-step-text">Instagram veya WhatsApp üzerinden fotoğraf ile iletin.</div></div>
+      <div class="info-step"><div class="info-step-num">3</div><div class="info-step-text">Ekibimiz en kısa sürede iade sürecinizi başlatır.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DESTEK & YARDIM -->
+<div class="support-section">
+  <div class="support-card">
+    <div class="support-title">🙋 Yardım & Destek</div>
+    <div class="support-sub">Sorularınız için bize ulaşın</div>
+    <div class="support-btns">
+      <a class="support-btn support-wa" href="https://wa.me/905366303654?text=Merhaba%2C%20sipari%C5%9F%20hakk%C4%B1nda%20yard%C4%B1m%20almak%20istiyorum." target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a class="support-btn support-ig" href="https://instagram.com/" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- SSS -->
+<div class="sss-section">
+  <div class="sss-card">
+    <div class="sss-header">❓ Sık Sorulan Sorular</div>
+    <div class="sss-item">
+      <button class="sss-q" onclick="toggleSSS(this)">Kargo kaç günde gelir? <span class="sss-icon">▾</span></button>
+      <div class="sss-a">Siparişiniz aynı gün kargoya verilir. 2–3 iş günü içinde kapınıza ulaşır.</div>
+    </div>
+    <div class="sss-item">
+      <button class="sss-q" onclick="toggleSSS(this)">Şeffaf kargo ne demek? <span class="sss-icon">▾</span></button>
+      <div class="sss-a">Ürününüz şeffaf paketleme ile kargolanır. Paketi açmadan ürünü görebilir, sonra ödemenizi yapabilirsiniz.</div>
+    </div>
+    <div class="sss-item">
+      <button class="sss-q" onclick="toggleSSS(this)">Beden tutmazsa iade edebilir miyim? <span class="sss-icon">▾</span></button>
+      <div class="sss-a">Evet. Teslimattan sonraki 2 gün içinde Instagram veya WhatsApp üzerinden bize ulaşın, iade sürecinizi başlatalım.</div>
+    </div>
+    <div class="sss-item">
+      <button class="sss-q" onclick="toggleSSS(this)">Forma kalitesi nasıl? <span class="sss-icon">▾</span></button>
+      <div class="sss-a">Formalarımız forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Logolar nakış işlemeli olup uzun yıllar dayanıklıdır.</div>
+    </div>
+    <div class="sss-item">
+      <button class="sss-q" onclick="toggleSSS(this)">2 Al 1 Hediye kampanyası nasıl işliyor? <span class="sss-icon">▾</span></button>
+      <div class="sss-a">Sepetinize 2 forma eklediğinizde 3. forma otomatik olarak hediye edilir. 4 farklı takımdan da seçim yapabilirsiniz.</div>
+    </div>
+  </div>
+</div>
+
+<!-- BEDEN REHBERİ OVERLAY -->
+<div class="size-guide-overlay" id="sizeGuideOverlay" onclick="if(event.target===this)closeSizeGuide()">
+  <div class="size-guide-box">
+    <div class="size-guide-handle"></div>
+    <div class="size-guide-inner">
+      <div class="size-guide-title">📏 Beden Rehberi</div>
+      <div class="size-guide-sub">Doğru bedeni seçmek için aşağıdaki tabloyu kullanın</div>
+      <table class="size-table">
+        <tr><th>Beden</th><th>Göğüs (cm)</th><th>Boy (cm)</th><th>Kilo (kg)</th></tr>
+        <tr><td><strong>S</strong></td><td>86–92</td><td>165–170</td><td>60–70</td></tr>
+        <tr><td><strong>M</strong></td><td>92–98</td><td>170–175</td><td>70–80</td></tr>
+        <tr><td><strong>L</strong></td><td>98–104</td><td>175–180</td><td>80–90</td></tr>
+        <tr><td><strong>XL</strong></td><td>104–110</td><td>178–183</td><td>90–100</td></tr>
+        <tr><td><strong>XXL</strong></td><td>110–118</td><td>180–186</td><td>100–115</td></tr>
+      </table>
+      <div class="size-guide-note">💡 İki beden arasındaysanız büyük bedeni tercih edin. Forma kumaşı esnektir ancak kas yapısı olan kişilere bir üst beden tavsiye edilir.</div>
+      <button class="size-guide-close" onclick="closeSizeGuide()">Kapat</button>
+    </div>
+  </div>
+</div>
+
+<!-- SON SİPARİŞ BİLDİRİMİ -->
+<div class="order-notif" id="orderNotif">
+  <img class="order-notif-img" id="orderNotifImg" src="" alt="">
+  <div class="order-notif-info">
+    <div class="order-notif-name" id="orderNotifName"></div>
+    <div class="order-notif-detail" id="orderNotifDetail"></div>
+  </div>
+  <button class="order-notif-close" onclick="document.getElementById('orderNotif').classList.remove('show')">✕</button>
+</div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a class="support-btn support-ig" href="https://instagram.com/" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Formam Premium</div>
+  <div>Fenerbahçe · Galatasaray · Beşiktaş · Trabzonspor</div>
+  <div>Kapıda Ödeme · Şeffaf Kargo</div>
+</footer>
+
+<!-- MODAL TAM EKRAN -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-bar">
+    <button class="modal-close-btn" onclick="closeModal()">✕</button>
+    <div class="modal-bar-title" id="modalBarTitle"></div>
+    <div class="modal-bar-space"></div>
+  </div>
+  <div class="modal-slider" id="modalSlider">
+    <div class="modal-slider-track" id="modalTrack"></div>
+  </div>
+  <div class="modal-thumbs-row" id="modalThumbsRow"></div>
+  <div class="modal-body">
+    <div class="modal-name" id="modalName"></div>
+    <div class="modal-sub-text">Premium · Nakış İşlemeli</div>
+    <div class="modal-price">690 ₺</div>
+    <div class="modal-price-note">Kargo dahil · Kapıda ödeme</div>
+
+    <!-- AÇIKLAMA -->
+    <div class="modal-desc" id="modalDesc"></div>
+
+    <div class="mdivider"></div>
+
+    <!-- ÖZELLİKLER -->
+    <div class="modal-features">
+      <div class="modal-feature"><span>🧵</span> Nakış işlemeli logolar</div>
+      <div class="modal-feature"><span>🎽</span> %100 polyester kumaş</div>
+      <div class="modal-feature"><span>🌊</span> Solmaz, çekmez</div>
+      <div class="modal-feature"><span>📦</span> Şeffaf kargo</div>
+    </div>
+
+    <div class="mdivider"></div>
+
+    <!-- BEDEN SEÇİMİ — çoklu -->
+    <div class="size-label">👆 Beden Seçin <span class="size-hint">(birden fazla seçebilirsiniz)</span></div>
+    <button class="size-guide-btn" onclick="openSizeGuide()">📏 Beden rehberine bak</button>
+    <div class="sizes" id="sizesContainer">
+      <button class="size-btn" onclick="toggleSize(this,'S')">S</button>
+      <button class="size-btn" onclick="toggleSize(this,'M')">M</button>
+      <button class="size-btn" onclick="toggleSize(this,'L')">L</button>
+      <button class="size-btn" onclick="toggleSize(this,'XL')">XL</button>
+      <button class="size-btn" onclick="toggleSize(this,'XXL')">XXL</button>
+    </div>
+
+    <!-- Seçilen bedenler listesi -->
+    <div class="selected-sizes" id="selectedSizes"></div>
+
+    <button class="add-btn" onclick="addToCart()">🛒 Sepete Ekle</button>
+    <div class="add-note-text">Seçilen her beden ayrı ayrı sepete eklenir</div>
+  </div>
+</div>
+
+<!-- SEPET -->
+<div class="cart-overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()">
+  <div class="cart-panel" id="cartPanel">
+    <div class="cart-head">
+      <div class="cart-head-title">Sepet</div>
+      <button class="cart-head-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty"><div class="cart-empty-icon">🛒</div><div class="cart-empty-text">Sepetiniz boş</div></div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total-row"><div class="ct-label">Toplam · Kargo Dahil</div><div class="ct-val" id="cartTotal">0 ₺</div></div>
+      <button class="cart-checkout-btn" onclick="openCheckout()">Siparişi Tamamla →</button>
+      <div class="cart-note">Kapıda ödeme · Kargo dahil · 2 gün iade</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+<div class="checkout-overlay" id="checkoutOverlay" onclick="if(event.target===this)closeCheckout()">
+  <div class="checkout-box">
+    <div class="checkout-handle"></div>
+    <div class="checkout-inner">
+      <div id="checkoutForm">
+        <div class="checkout-title">Siparişi Tamamla</div>
+        <div class="checkout-sub">Bilgilerinizi eksiksiz doldurun.</div>
+        <div class="order-summary" id="orderSummary"></div>
+
+        <!-- ÖDEME YÖNTEMİ -->
+        <div class="form-group">
+          <label class="form-label">Ödeme Yöntemi <span class="form-label-req">*</span></label>
+          <div class="payment-opts">
+            <div class="payment-opt" id="payNakit" onclick="selectPayment('nakit')">
+              <div class="payment-opt-icon">💵</div>
+              <div class="payment-opt-info">
+                <div class="payment-opt-title">Kapıda Nakit</div>
+                <div class="payment-opt-sub">Tavsiye edilen</div>
+              </div>
+              <div class="payment-opt-check" id="checkNakit"></div>
+            </div>
+            <div class="payment-opt" id="payKart" onclick="selectPayment('kart')">
+              <div class="payment-opt-icon">💳</div>
+              <div class="payment-opt-info">
+                <div class="payment-opt-title">Kapıda Kart</div>
+                <div class="payment-opt-sub">+50 ₺ pos hizmet bedeli</div>
+              </div>
+              <div class="payment-opt-check" id="checkKart"></div>
+            </div>
+          </div>
+          <div class="payment-warning" id="paymentWarning" style="display:none">
+            ⚠️ Kapıda kart ile ödemelerde <strong>+50 ₺ pos cihazı hizmet bedeli</strong> kargo firması tarafından uygulanmaktadır. Sizlere nakit ödemeyi tavsiye ederiz, ancak dilerseniz kart ile devam edebilirsiniz.
+          </div>
+        </div>
+
+        <div class="form-group"><label class="form-label">Ad Soyad</label><input class="form-input" id="chkAd" placeholder="Adınız Soyadınız"></div>
+        <div class="form-group"><label class="form-label">Telefon</label><input class="form-input" id="chkTel" placeholder="05XX XXX XX XX" type="tel"></div>
+        <div class="form-group"><label class="form-label">İl <span class="form-label-req">*</span></label><input class="form-input" id="chkIl" placeholder="Örn: İstanbul"></div>
+        <div class="form-group"><label class="form-label">İlçe <span class="form-label-req">*</span></label><input class="form-input" id="chkIlce" placeholder="Örn: Kadıköy"></div>
+        <div class="form-group">
+          <label class="form-label">Mahalle <span class="form-label-req">*</span></label>
+          <input class="form-input" id="chkMahalle" placeholder="Örn: Moda Mah.">
+          <div class="form-hint">⚠️ Mahalle bilgisini eksiksiz yazın — yanlış mahalle kargo gecikmesine yol açar.</div>
+        </div>
+        <div class="form-group"><label class="form-label">Sokak / Cadde ve Kapı No <span class="form-label-req">*</span></label><input class="form-input" id="chkSokak" placeholder="Örn: Bahariye Cad. No:12 Kat:3 D:5"></div>
+        <div class="form-group"><label class="form-label">Adres Tarifi <span class="form-label-opt">(opsiyonel)</span></label><input class="form-input" id="chkTarif" placeholder="Bina rengi, karşısındaki yer vb."></div>
+        <button class="submit-btn" id="chkBtn" onclick="submitOrder()">Siparişi Gönder →</button>
+        <div class="form-footer-note">Kapıda ödeme · Kargo dahil · 2 gün iade</div>
+      </div>
+      <div class="success-screen" id="checkoutSuc">
+        <div class="success-icon">✅</div>
+        <div class="success-title">Sipariş Alındı!</div>
+        <div class="success-desc">Siparişiniz kaydedildi.<br>2–3 iş günü içinde kapınıza ulaşacaktır.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const PRODUCTS = [
+  { name:'TS 61 Tasarım Forma', imgs:['https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454753/IMG_0439_nvnq84.heic','https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454753/IMG_0440_zlihup.heic'], price:690, desc:'Trabzonspor\'un 61 temalı özel tasarım formasının premium replikası. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli arma ve logolar ile uzun yıllar kullanıma uygundur.' },
+  { name:'TS Adidas Tasarım Forma', imgs:['https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454754/IMG_0463_hpcu7n.heic','https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454754/IMG_0463_hpcu7n.heic'], price:690, desc:'Trabzonspor\'un Adidas tasarımlı formasının premium versiyonu. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli detaylar ile uzun yıllar kullanıma uygundur.' },
+  { name:'TS Puma Tasarım Forma', imgs:['https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454753/IMG_0448_f1riun.heic','https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454753/IMG_0452_wzkzek.heic'], price:690, desc:'Trabzonspor\'un Puma tasarımlı formasının premium versiyonu. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli detaylar ile uzun yıllar kullanıma uygundur.' },
+  { name:'TS Çubuklu Forma', imgs:['https://res.cloudinary.com/dzfiyamng/image/upload/v1784650414/IMG_1905_ssaebc.jpg','https://res.cloudinary.com/dzfiyamng/image/upload/v1784650414/IMG_1908_dq5b2u.jpg'], price:690, desc:'Trabzonspor\'un çubuklu tasarım formasının premium replikası. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli arma ve logolar ile uzun yıllar kullanıma uygundur.' },
+  { name:'TS Siyah Forma', imgs:['https://res.cloudinary.com/dzfiyamng/image/upload/v1784650412/IMG_1906_r8nx5n.jpg','https://res.cloudinary.com/dzfiyamng/image/upload/v1784650414/dbe271f1-fdc8-4508-bb08-93c1809be88a_dsq1cx.jpg'], price:690, desc:'Trabzonspor\'un siyah temalı özel tasarım formasının premium replikası. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli arma ve logolar ile uzun yıllar kullanıma uygundur.' },
+  { name:'TS Bordo Forma', imgs:['https://res.cloudinary.com/dzfiyamng/image/upload/v1784650412/IMG_1907_b4swrp.jpg','https://res.cloudinary.com/dzfiyamng/image/upload/v1784650412/IMG_1907_b4swrp.jpg'], price:690, desc:'Trabzonspor\'un bordo temalı özel tasarım formasının premium replikası. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli arma ve logolar ile uzun yıllar kullanıma uygundur.' },
+];
+
+let cart=[], modalProd=null, modalIdx=0;
+let selectedSizes={};
+let swipeX=0, swipeY=0;
+let odemeYontemi=null;
+
+// Fiyat tablosu
+function getTotal(){
+  const q=getTotalQty();
+  const base=q>=2?1300:cart.reduce((s,i)=>s+(i.price*i.qty),0);
+  const kartEki=odemeYontemi==='kart'?50:0;
+  return base+kartEki;
+}
+
+function getPriceTable(q){
+  // 2+1 kampanya mantığı: 2=1300, 3=1800(?), no — kullanıcı tanımladı:
+  // 2 forma: 1300, 4 forma: 1800, 5: 2300, 6: 2850
+  if(q<=1)return q*690;
+  if(q===2||q===3)return 1300;
+  if(q===4)return 1800;
+  if(q===5)return 2300;
+  if(q===6)return 2850;
+  return 2850+(q-6)*690; // 7+
+}
+
+function getTotal(){
+  const q=getTotalQty();
+  const base=getPriceTable(q);
+  return base+(odemeYontemi==='kart'?50:0);
+}
+
+function selectPayment(type){
+  odemeYontemi=type;
+  document.getElementById('payNakit').classList.toggle('selected',type==='nakit');
+  document.getElementById('payKart').classList.toggle('selected',type==='kart');
+  const warn=document.getElementById('paymentWarning');
+  warn.style.display=type==='kart'?'block':'none';
+  renderOrderSummary();
+}
+
+function setSliderHeight(){
+  const w=document.getElementById('modalSlider').offsetWidth;
+  document.getElementById('modalSlider').style.height=Math.round(w*1.25)+'px';
+}
+
+function openModal(idx){
+  modalProd=PRODUCTS[idx]; modalIdx=0; selectedSizes={};
+  document.getElementById('modalName').textContent=modalProd.name;
+  document.getElementById('modalBarTitle').textContent=modalProd.name;
+  document.getElementById('modalDesc').textContent=modalProd.desc;
+  document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('sel'));
+  renderSelectedSizes();
+
+  const track=document.getElementById('modalTrack');
+  track.innerHTML=modalProd.imgs.map(src=>`<div class="modal-slide"><img src="${src}"></div>`).join('');
+  track.style.transform='translateX(0)';
+
+  const row=document.getElementById('modalThumbsRow');
+  row.innerHTML=modalProd.imgs.map((src,i)=>`<div class="modal-thumb${i===0?' active':''}" onclick="goSlide(${i})"><img src="${src}"></div>`).join('')
+    +`<div class="modal-dots">`
+    +modalProd.imgs.map((_,i)=>`<button class="modal-dot${i===0?' active':''}" onclick="goSlide(${i})"></button>`).join('')
+    +`</div>`;
+
+  setSliderHeight();
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+
+function goSlide(i){
+  modalIdx=i;
+  document.getElementById('modalTrack').style.transform=`translateX(-${i*100}%)`;
+  document.querySelectorAll('.modal-thumb').forEach((t,j)=>t.classList.toggle('active',j===i));
+  document.querySelectorAll('.modal-dot').forEach((d,j)=>d.classList.toggle('active',j===i));
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const slider=document.getElementById('modalSlider');
+  slider.addEventListener('touchstart',e=>{swipeX=e.touches[0].clientX;swipeY=e.touches[0].clientY;},{passive:true});
+  slider.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-swipeX;
+    const dy=e.changedTouches[0].clientY-swipeY;
+    if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){
+      if(dx<0&&modalIdx<modalProd.imgs.length-1)goSlide(modalIdx+1);
+      else if(dx>0&&modalIdx>0)goSlide(modalIdx-1);
+    }
+  },{passive:true});
+});
+
+function toggleSize(btn,size){
+  if(selectedSizes[size]){delete selectedSizes[size];btn.classList.remove('sel');}
+  else{selectedSizes[size]=1;btn.classList.add('sel');}
+  renderSelectedSizes();
+}
+
+function renderSelectedSizes(){
+  const container=document.getElementById('selectedSizes');
+  const sizes=Object.keys(selectedSizes);
+  if(!sizes.length){container.innerHTML='';return;}
+  container.innerHTML=sizes.map(size=>`
+    <div class="sel-size-row">
+      <div class="sel-size-name">Beden ${size}</div>
+      <div style="display:flex;align-items:center">
+        <div class="sel-size-qty">
+          <button class="sel-size-qb" onclick="changeSelQty('${size}',-1)">−</button>
+          <div class="sel-size-qv">${selectedSizes[size]}</div>
+          <button class="sel-size-qb" onclick="changeSelQty('${size}',1)">+</button>
+        </div>
+        <button class="sel-size-del" onclick="removeSelSize('${size}')">✕</button>
+      </div>
+    </div>`).join('');
+}
+
+function changeSelQty(size,d){selectedSizes[size]=Math.max(1,Math.min(10,(selectedSizes[size]||1)+d));renderSelectedSizes();}
+function removeSelSize(size){delete selectedSizes[size];document.querySelectorAll('.size-btn').forEach(b=>{if(b.textContent===size)b.classList.remove('sel');});renderSelectedSizes();}
+
+function addToCart(){
+  const sizes=Object.keys(selectedSizes);
+  if(!sizes.length){alert('Lütfen en az bir beden seçin! 👆');return;}
+  sizes.forEach(size=>{
+    const key=modalProd.name+'__'+size;
+    const ex=cart.find(i=>i.key===key);
+    if(ex)ex.qty+=selectedSizes[size];
+    else cart.push({key,name:modalProd.name,img:modalProd.imgs[0],price:modalProd.price,size,qty:selectedSizes[size]});
+  });
+  closeModal();renderCart();openCart();
+}
+
+function openCart(){document.getElementById('cartOverlay').classList.add('open');document.getElementById('cartPanel').classList.add('open');document.body.style.overflow='hidden';renderCart();}
+function closeCart(){document.getElementById('cartOverlay').classList.remove('open');document.getElementById('cartPanel').classList.remove('open');document.body.style.overflow='';}
+function getTotalQty(){return cart.reduce((s,i)=>s+i.qty,0);}
+
+function updateBadge(){
+  const total=getTotalQty();
+  const b=document.getElementById('cartBadge');
+  b.textContent=total;b.classList.toggle('show',total>0);
+}
+
+function renderCart(){
+  updateBadge();
+  const items=document.getElementById('cartItems');
+  const footer=document.getElementById('cartFooter');
+  if(!cart.length){items.innerHTML='<div class="cart-empty"><div class="cart-empty-icon">🛒</div><div class="cart-empty-text">Sepetiniz boş</div></div>';footer.style.display='none';return;}
+  const tq=getTotalQty();
+  let html='';
+  cart.forEach((item,idx)=>{
+    html+=`<div class="cart-item"><img class="ci-img" src="${item.img}"><div class="ci-info"><div class="ci-name">${item.name}</div><div class="ci-size">Beden: ${item.size}</div><div class="ci-row"><div class="ci-price">${item.price} ₺</div><div class="ci-actions"><div class="ci-qty"><button class="ci-qb" onclick="updateQty(${idx},-1)">−</button><div class="ci-qv">${item.qty}</div><button class="ci-qb" onclick="updateQty(${idx},1)">+</button></div><button class="ci-del" onclick="removeItem(${idx})">✕</button></div></div></div></div>`;
+  });
+  if(tq>=2)html+=`<div class="camp-bar">🎁 <strong>2 Al 1 Hediye aktif!</strong> ${tq>=3?'Hediye forma siparişinize eklenecek.':'Bir forma daha ekle, 3. forma bizden!'}</div>`;
+  if(tq>=6)html+=`<div class="bulk-notice">📦 <strong>Toplu sipariş veriyorsanız</strong> dilerseniz <a href="https://wa.me/905366303654" target="_blank">WhatsApp'tan bize ulaşabilirsiniz</a>, yardımcı olabiliriz!</div>`;
+  items.innerHTML=html;
+  footer.style.display='block';
+  document.getElementById('cartTotal').textContent=getPriceTable(tq).toLocaleString('tr-TR')+' ₺';
+}
+
+function updateQty(idx,d){cart[idx].qty=Math.max(1,cart[idx].qty+d);renderCart();}
+function removeItem(idx){cart.splice(idx,1);renderCart();}
+
+function openCheckout(){closeCart();odemeYontemi=null;document.getElementById('payNakit').classList.remove('selected');document.getElementById('payKart').classList.remove('selected');document.getElementById('paymentWarning').style.display='none';renderOrderSummary();document.getElementById('checkoutOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeCheckout(){document.getElementById('checkoutOverlay').classList.remove('open');document.body.style.overflow='';}
+
+function renderOrderSummary(){
+  const tq=getTotalQty();
+  const base=getPriceTable(tq);
+  const kartEki=odemeYontemi==='kart'?50:0;
+  const toplam=base+kartEki;
+  let html='<div class="os-title">Sipariş Özeti</div>';
+  cart.forEach(item=>{html+=`<div class="os-item"><span>${item.name} · ${item.size} · ${item.qty} adet</span><span>${item.price*item.qty} ₺</span></div>`;});
+  const listTotal=cart.reduce((s,i)=>s+(i.price*i.qty),0);
+  const disc=listTotal-base;
+  if(disc>0)html+=`<div class="os-item" style="color:var(--gold)"><span>🎁 Kampanya İndirimi</span><span>-${disc} ₺</span></div>`;
+  if(kartEki)html+=`<div class="os-item" style="color:#e55"><span>💳 Pos Hizmet Bedeli</span><span>+50 ₺</span></div>`;
+  html+=`<div class="os-total"><span class="os-tl">Toplam (Kargo Dahil)</span><span class="os-tv">${toplam.toLocaleString('tr-TR')} ₺</span></div>`;
+  document.getElementById('orderSummary').innerHTML=html;
+}
+
+function buildAddress(){
+  const il=document.getElementById('chkIl').value.trim();
+  const ilce=document.getElementById('chkIlce').value.trim();
+  const mah=document.getElementById('chkMahalle').value.trim();
+  const sokak=document.getElementById('chkSokak').value.trim();
+  const tarif=document.getElementById('chkTarif').value.trim();
+  return {full:`${mah}, ${sokak}, ${ilce}/${il}${tarif?' ('+tarif+')':''}`,ok:il&&ilce&&mah&&sokak};
+}
+
+async function submitOrder(){
+  if(!odemeYontemi){alert('Lütfen ödeme yöntemini seçin.');return;}
+  const ad=document.getElementById('chkAd').value.trim();
+  const tel=document.getElementById('chkTel').value.trim();
+  const addr=buildAddress();
+  if(!ad||!tel||!addr.ok){alert('Lütfen tüm zorunlu (*) alanları doldurun.');return;}
+  const btn=document.getElementById('chkBtn');
+  btn.textContent='Gönderiliyor...';btn.disabled=true;
+  const tq=getTotalQty();
+  const toplam=getTotal();
+  let urunler=cart.map(i=>`${i.name} ${i.size} x${i.qty}`).join(', ');
+  if(tq>=2)urunler+=' + HEDİYE FORMA';
+  const odeme=odemeYontemi==='kart'?`Kapıda Kart (+50 ₺ pos bedeli)`:'Kapıda Nakit';
+  const msg=`🚨 WEBSİTESİ SİPARİŞİ\n\nAd: ${ad}\nTel: ${tel}\nAdres: ${addr.full}\nÜrün: ${urunler}\nÖdeme: ${odeme}\nToplam: ${toplam} ₺`;
+  await sendTelegram(msg);
+  cart=[];renderCart();
+  document.getElementById('checkoutForm').style.display='none';
+  document.getElementById('checkoutSuc').classList.add('show');
+}
+
+function sendWhatsApp(){
+  if(!odemeYontemi){alert('Lütfen önce ödeme yöntemini seçin.');return;}
+  const ad=document.getElementById('chkAd').value.trim();
+  const tel=document.getElementById('chkTel').value.trim();
+  const addr=buildAddress();
+  if(!ad||!tel||!addr.ok){alert('Lütfen önce tüm zorunlu alanları doldurun.');return;}
+  const tq=getTotalQty();
+  const toplam=getTotal();
+  let urunler=cart.map(i=>`${i.name} ${i.size} x${i.qty}`).join(', ');
+  if(tq>=2)urunler+=' + HEDİYE FORMA';
+  const odeme=odemeYontemi==='kart'?'Kapıda Kart (+50₺)':'Kapıda Nakit';
+  const msg=encodeURIComponent(`🛍️ Sipariş\n\nAd: ${ad}\nTel: ${tel}\nAdres: ${addr.full}\nÜrün: ${urunler}\nÖdeme: ${odeme}\nToplam: ${toplam} ₺`);
+  window.open('https://wa.me/905366303654?text='+msg,'_blank');
+}
+
+async function sendTelegram(msg){
+  const T='8953465812:AAGKc6A1JDn7jfWyVd2cC3P-UDERC4otKrQ',C='-4993668301';
+  try{await fetch('https://api.telegram.org/bot'+T+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C,text:msg})});}catch(e){console.error(e);}
+}
+
+// === CANLI SAYAÇLAR ===
+function randBetween(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
+function updateLiveCounters(){
+  const el=document.getElementById('liveCount');
+  if(el)el.textContent=randBetween(8,47);
+  document.querySelectorAll('.viewer-count').forEach(el=>{el.textContent=randBetween(3,28);});
+}
+updateLiveCounters();
+setInterval(updateLiveCounters,randBetween(5000,9000));
+
+// === FAVORİ → WHATSAPP ===
+function toggleFav(btn, idx){
+  const prod=PRODUCTS[idx];
+  const msg=encodeURIComponent(`Merhaba! "${prod.name}" formasını beğendim, stok bilgisi alabilir miyim?`);
+  window.open('https://wa.me/905366303654?text='+msg,'_blank');
+}
+
+// === BEDEN REHBERİ ===
+function openSizeGuide(){document.getElementById('sizeGuideOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeSizeGuide(){document.getElementById('sizeGuideOverlay').classList.remove('open');document.body.style.overflow='';}
+
+// === SSS ===
+function toggleSSS(btn){
+  const item=btn.closest('.sss-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.sss-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+// === SON SİPARİŞ BİLDİRİMİ ===
+const notifData=[
+  {name:'TS 61 Tasarım · L beden', city:'Trabzon', img:'https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454753/IMG_0439_nvnq84.heic'},
+  {name:'TS Adidas Tasarım · M beden', city:'İstanbul', img:'https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454754/IMG_0463_hpcu7n.heic'},
+  {name:'TS Puma Tasarım · S beden', city:'Samsun', img:'https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454753/IMG_0448_f1riun.heic'},
+  {name:'TS 61 Tasarım · M beden', city:'İzmir', img:'https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454753/IMG_0439_nvnq84.heic'},
+  {name:'TS Çubuklu Forma · L beden', city:'Bursa', img:'https://res.cloudinary.com/dzfiyamng/image/upload/v1784650414/IMG_1905_ssaebc.jpg'},
+  {name:'TS Siyah Forma · XL beden', city:'Ankara', img:'https://res.cloudinary.com/dzfiyamng/image/upload/v1784650412/IMG_1906_r8nx5n.jpg'},
+];
+let notifIdx=0;
+function showOrderNotif(){
+  const d=notifData[notifIdx%notifData.length];
+  notifIdx++;
+  const mins=randBetween(2,58);
+  document.getElementById('orderNotifImg').src=d.img;
+  document.getElementById('orderNotifName').textContent=d.name;
+  document.getElementById('orderNotifDetail').textContent=`${d.city} · ${mins} dakika önce sipariş verildi`;
+  const notif=document.getElementById('orderNotif');
+  notif.classList.add('show');
+  setTimeout(()=>notif.classList.remove('show'),4500);
+}
+setTimeout(()=>{showOrderNotif();setInterval(showOrderNotif,randBetween(45000,90000));},randBetween(15000,20000));
+</script>
+</body>
+</html>
