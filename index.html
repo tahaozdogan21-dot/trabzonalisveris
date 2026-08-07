@@ -113,6 +113,21 @@ nav{position:sticky;top:0;z-index:200;height:56px;background:linear-gradient(120
 .camp-opt-label{font-size:11px;color:rgba(255,255,255,0.5);}
 .camp-opt-badge{display:inline-block;margin-top:7px;background:linear-gradient(120deg,var(--gold),#e6c877);color:#241a05;font-size:9.5px;font-weight:800;padding:4px 10px;border-radius:980px;letter-spacing:0.2px;}
 
+/* PROFESYONEL KOLEKSİYON */
+.pro-banner::after{content:'PRO';}
+.pro-enter-btn{width:100%;margin-top:14px;padding:14px;border-radius:14px;background:linear-gradient(120deg,var(--gold),#e6c877);color:#241a05;border:none;font-size:14px;font-weight:800;cursor:pointer;-webkit-tap-highlight-color:transparent;box-shadow:0 8px 20px rgba(201,168,76,0.3);}
+.pro-catalog{position:relative;transition:filter 0.5s ease;}
+.pro-catalog.locked .prod-card{filter:blur(9px);pointer-events:none;opacity:0.4;transform:scale(0.97);transition:filter 0.6s ease,opacity 0.6s ease,transform 0.6s ease;}
+.pro-catalog.unlocked .prod-card{filter:blur(0);opacity:1;pointer-events:all;transform:scale(1);}
+.pro-card{border:1px solid rgba(201,168,76,0.35);}
+.pro-badge-tag{background:rgba(201,168,76,0.85);border-color:rgba(255,255,255,0.4);color:#241a05;}
+.pro-badge-package{background:rgba(11,42,74,0.85);color:#fff;border-color:rgba(201,168,76,0.6);}
+.pro-discount-note{margin:2px 12px 16px;padding:12px 14px;border-radius:14px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--black);font-size:12px;line-height:1.6;display:flex;gap:8px;align-items:flex-start;}
+.pro-discount-note svg{flex-shrink:0;color:var(--gold);margin-top:1px;}
+.pro-gate-overlay{z-index:960;}
+.pro-gate-icon-wrap{background:linear-gradient(120deg,#c94c4c,#e67878);}
+.pro-gate-icon-wrap svg{color:#fff;}
+
 /* INFO */
 .info-section{padding:0 12px 20px;display:flex;flex-direction:column;gap:10px;}
 .info-card{position:relative;overflow:hidden;background:#0a0206;background-image:linear-gradient(150deg,#2c0710 0%,#3a0812 55%,#0B2A4A 100%),repeating-linear-gradient(135deg,rgba(255,255,255,0.03) 0px,rgba(255,255,255,0.03) 2px,transparent 2px,transparent 24px);border-radius:18px;padding:18px 18px 20px;box-shadow:0 8px 24px rgba(20,5,10,0.25);border:1px solid rgba(201,168,76,0.18);}
@@ -259,6 +274,7 @@ footer{position:relative;overflow:hidden;text-align:center;padding:38px 24px 30p
 .modal-sub-text{font-size:11.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:9px;}
 .modal-price{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',system-ui,sans-serif;font-size:25px;font-weight:700;margin-bottom:1px;color:var(--team);}
 .modal-price-note{font-size:12px;color:var(--gray);margin-bottom:16px;}
+.modal-pro-warning{background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.35);border-radius:12px;padding:10px 12px;font-size:11.5px;line-height:1.55;color:var(--black);margin-bottom:16px;}
 .mdivider{height:1px;background:var(--border);margin:16px 0;}
 
 .size-label{font-size:13px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:5px;}
@@ -450,7 +466,7 @@ footer{position:relative;overflow:hidden;text-align:center;padding:38px 24px 30p
 </nav>
 
 <div class="hero">
-  <img class="hero-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025273/IMG_0439_2_kl4mxv.heic" alt="Trabzonspor">
+  <img class="hero-img" src="https://res.cloudinary.com/dzfiyamng/image/upload/f_auto,q_auto/v1784454753/IMG_0439_nvnq84.heic" alt="Trabzonspor">
   <img class="hero-crest" id="heroCrest" src="" alt="Trabzonspor Arması">
   <div class="hero-content">
     <div class="hero-tag">Trabzonspor · Resmi Ruhla Tasarlandı</div>
@@ -510,7 +526,7 @@ footer{position:relative;overflow:hidden;text-align:center;padding:38px 24px 30p
 <div class="catalog" id="catalog">
   <div class="prod-card" onclick="cardTap(event,this,0)">
     <div class="prod-img-wrap">
-      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025273/IMG_0439_2_kl4mxv.heic" alt="TS 61 Tasarım">
+      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025273/IMG_0439_2_kl4mxv.heic" alt="TS 61 Tasarım">
       <div class="prod-badge" style="--shine-delay:0">Yeni</div>
       <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,0)" title="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
       <img class="prod-watermark" src="" alt="">
@@ -532,7 +548,7 @@ footer{position:relative;overflow:hidden;text-align:center;padding:38px 24px 30p
   </div>
   <div class="prod-card" onclick="cardTap(event,this,1)">
     <div class="prod-img-wrap">
-      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025269/IMG_0463_2_logll2.heic" alt="TS Adidas Tasarım">
+      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025269/IMG_0463_2_logll2.heic" alt="TS Adidas Tasarım">
       <div class="prod-badge" style="--shine-delay:1.4">Çok Satan</div>
       <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,1)" title="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
       <img class="prod-watermark" src="" alt="">
@@ -554,7 +570,7 @@ footer{position:relative;overflow:hidden;text-align:center;padding:38px 24px 30p
   </div>
   <div class="prod-card" onclick="cardTap(event,this,2)">
     <div class="prod-img-wrap">
-      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025282/IMG_2195_vkdbv0.jpg" alt="TS Çubuklu Forma">
+      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025282/IMG_2195_vkdbv0.jpg" alt="TS Çubuklu Forma">
       <div class="prod-badge" style="--shine-delay:0.7">Yeni</div>
       <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,2)" title="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
       <img class="prod-watermark" src="" alt="">
@@ -576,7 +592,7 @@ footer{position:relative;overflow:hidden;text-align:center;padding:38px 24px 30p
   </div>
   <div class="prod-card" onclick="cardTap(event,this,3)">
     <div class="prod-img-wrap">
-      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025279/IMG_2216_uasc2v.jpg" alt="TS Siyah Forma">
+      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025279/IMG_2216_uasc2v.jpg" alt="TS Siyah Forma">
       <div class="prod-badge" style="--shine-delay:2.1">Popüler</div>
       <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,3)" title="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
       <img class="prod-watermark" src="" alt="">
@@ -598,7 +614,7 @@ footer{position:relative;overflow:hidden;text-align:center;padding:38px 24px 30p
   </div>
   <div class="prod-card" onclick="cardTap(event,this,4)">
     <div class="prod-img-wrap">
-      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025273/IMG_2269_kt39qn.jpg" alt="TS Bordo Forma">
+      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025273/IMG_2269_kt39qn.jpg" alt="TS Bordo Forma">
       <div class="prod-badge" style="--shine-delay:3.5">Yeni</div>
       <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,4)" title="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
       <img class="prod-watermark" src="" alt="">
@@ -618,6 +634,119 @@ footer{position:relative;overflow:hidden;text-align:center;padding:38px 24px 30p
       </div>
     </div>
   </div>
+</div>
+
+<!-- PROFESYONEL KOLEKSİYON — İsim Baskılı -->
+<div class="section-header">
+  <div class="section-tag">Profesyonel Koleksiyon</div>
+  <div class="section-title">İsim Baskılı Formalar</div>
+</div>
+
+<div class="campaign pro-banner reveal" id="proBanner">
+  <img class="camp-crest" src="" alt="">
+  <div class="camp-tag"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2H22l-6 4.6L18.4 21 12 16.4 5.6 21 8 13.8l-6-4.6h7.6z"/></svg> Profesyonel Seri</div>
+  <div class="camp-title">M. Salah <span>Profesyonel</span></div>
+  <div class="camp-desc">Maç formasıyla birebir aynı kalitede, <strong style="color:var(--gold)">isim ve numara baskılı</strong> profesyonel formalar. 3'lü Salah Paket'te <strong style="color:#fff">1.900 ₺</strong>'ye 3 forma birden, 4. formadan itibaren ekstra indirim kazanırsınız.</div>
+  <div class="camp-opts">
+    <div class="camp-opt"><div class="camp-opt-price">790 ₺</div><div class="camp-opt-label">Tekli Forma · İsim Baskılı</div></div>
+    <div class="camp-opt"><div class="camp-opt-price">1.900 ₺</div><div class="camp-opt-label">Salah Paket · 3 Forma</div><div class="camp-opt-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2H22l-6 4.6L18.4 21 12 16.4 5.6 21 8 13.8l-6-4.6h7.6z"/></svg> En Avantajlı</div></div>
+  </div>
+  <button class="pro-enter-btn" onclick="openProfessionalGate()">Profesyonel Ürünleri Gör →</button>
+</div>
+
+<div class="catalog pro-catalog locked" id="professionalCatalog">
+  <div class="prod-card pro-card" onclick="cardTap(event,this,5)">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025281/IMG_2537_2_vkeyvc.png" alt="M.Salah Profesyonel Çubuklu">
+      <div class="prod-badge pro-badge-tag" style="--shine-delay:0">İsim Baskılı</div>
+      <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,5)" title="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+      <img class="prod-watermark" src="" alt="">
+      <div class="prod-overlay-info">
+        <div class="prod-name-sub">M. Salah · Profesyonel</div>
+        <div class="prod-name">Çubuklu Forma</div>
+        <div style="display:flex;align-items:center;gap:7px;margin-top:7px;flex-wrap:wrap">
+          <div class="stock-badge"><div class="stock-dot"></div> Sınırlı Stok</div>
+          <div class="prod-viewer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span class="viewer-count"></span> inceliyor</div>
+        </div>
+      </div>
+    </div>
+    <div class="prod-info">
+      <div class="prod-price-block">
+        <div class="prod-price">790 ₺</div>
+        <div class="prod-price-sub">Kargo dahil</div>
+      </div>
+    </div>
+  </div>
+  <div class="prod-card pro-card" onclick="cardTap(event,this,6)">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025279/IMG_2548_2_grhkyh.png" alt="M.Salah Profesyonel Siyah">
+      <div class="prod-badge pro-badge-tag" style="--shine-delay:1.4">İsim Baskılı</div>
+      <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,6)" title="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+      <img class="prod-watermark" src="" alt="">
+      <div class="prod-overlay-info">
+        <div class="prod-name-sub">M. Salah · Profesyonel</div>
+        <div class="prod-name">Siyah Forma</div>
+        <div style="display:flex;align-items:center;gap:7px;margin-top:7px;flex-wrap:wrap">
+          <div class="stock-badge"><div class="stock-dot"></div> Sınırlı Stok</div>
+          <div class="prod-viewer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span class="viewer-count"></span> inceliyor</div>
+        </div>
+      </div>
+    </div>
+    <div class="prod-info">
+      <div class="prod-price-block">
+        <div class="prod-price">790 ₺</div>
+        <div class="prod-price-sub">Kargo dahil</div>
+      </div>
+    </div>
+  </div>
+  <div class="prod-card pro-card" onclick="cardTap(event,this,7)">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025279/IMG_2547_2_kk374v.png" alt="M.Salah Profesyonel Bordo">
+      <div class="prod-badge pro-badge-tag" style="--shine-delay:2.8">İsim Baskılı</div>
+      <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,7)" title="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+      <img class="prod-watermark" src="" alt="">
+      <div class="prod-overlay-info">
+        <div class="prod-name-sub">M. Salah · Profesyonel</div>
+        <div class="prod-name">Bordo Forma</div>
+        <div style="display:flex;align-items:center;gap:7px;margin-top:7px;flex-wrap:wrap">
+          <div class="stock-badge"><div class="stock-dot"></div> Sınırlı Stok</div>
+          <div class="prod-viewer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span class="viewer-count"></span> inceliyor</div>
+        </div>
+      </div>
+    </div>
+    <div class="prod-info">
+      <div class="prod-price-block">
+        <div class="prod-price">790 ₺</div>
+        <div class="prod-price-sub">Kargo dahil</div>
+      </div>
+    </div>
+  </div>
+  <div class="prod-card pro-card pro-package-card" onclick="cardTap(event,this,8)">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025281/IMG_2537_2_vkeyvc.png" alt="Salah Profesyonel Paket">
+      <div class="prod-badge pro-badge-tag pro-badge-package" style="--shine-delay:0.5">3'lü Paket</div>
+      <button class="fav-btn" onclick="event.stopPropagation();toggleFav(this,9)" title="Favorilere ekle"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+      <img class="prod-watermark" src="" alt="">
+      <div class="prod-overlay-info">
+        <div class="prod-name-sub">M. Salah · Profesyonel</div>
+        <div class="prod-name">Salah Paket · 3 Forma</div>
+        <div style="display:flex;align-items:center;gap:7px;margin-top:7px;flex-wrap:wrap">
+          <div class="stock-badge"><div class="stock-dot"></div> Sınırlı Stok</div>
+          <div class="prod-viewer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span class="viewer-count"></span> inceliyor</div>
+        </div>
+      </div>
+    </div>
+    <div class="prod-info">
+      <div class="prod-price-block">
+        <div class="prod-price">1.900 ₺</div>
+        <div class="prod-price-sub">3 forma · Kargo dahil</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pro-discount-note reveal">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2H22l-6 4.6L18.4 21 12 16.4 5.6 21 8 13.8l-6-4.6h7.6z"/></svg>
+  Salah Profesyonel formalarda 4. formada <strong>%10</strong>, 5. formada <strong>%15</strong>, 6. formada <strong>%20</strong> indirim otomatik uygulanır.
 </div>
 
 
@@ -721,6 +850,24 @@ footer{position:relative;overflow:hidden;text-align:center;padding:38px 24px 30p
   </div>
 </div>
 
+<!-- PROFESYONEL SERİ UYARISI -->
+<div class="gift-overlay pro-gate-overlay" id="proGateOverlay" onclick="if(event.target===this)closeProfessionalGate()">
+  <div class="gift-box pro-gate-box">
+    <div class="gift-handle"></div>
+    <div class="gift-inner">
+      <div class="gift-icon-wrap pro-gate-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="gift-title">Profesyonel Seri Uyarısı</div>
+      <div class="gift-desc">Bu ürün grubu <strong>isim baskılı profesyonel</strong> formalardan oluşmaktadır. Baskı işlemi nedeniyle <strong>1 gün gecikme / aksama olabilir</strong>, bilginiz olsun.</div>
+      <button class="gift-btn-primary" onclick="continueProfessional()">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 19 12"/><polyline points="12 5 19 12 12 19"/></svg>
+        Devam Et
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- SON SİPARİŞ BİLDİRİMİ -->
 <div class="order-notif" id="orderNotif">
   <img class="order-notif-img" id="orderNotifImg" src="" alt="">
@@ -765,9 +912,10 @@ footer{position:relative;overflow:hidden;text-align:center;padding:38px 24px 30p
       <div class="modal-thumbs-row" id="modalThumbsRow"></div>
 
       <div class="modal-name" id="modalName"></div>
-      <div class="modal-sub-text">Premium · Nakış İşlemeli</div>
-      <div class="modal-price">690 ₺</div>
+      <div class="modal-sub-text" id="modalSubText">Premium · Nakış İşlemeli</div>
+      <div class="modal-price" id="modalPrice">690 ₺</div>
       <div class="modal-price-note">Kargo dahil · Kapıda ödeme</div>
+      <div class="modal-pro-warning" id="modalProWarning" style="display:none">⚠️ Bu ürün grubu isim baskılı profesyonel formalardır. Baskı işlemi nedeniyle 1 gün gecikme/aksama olabilir.</div>
 
       <!-- BEDEN SEÇİMİ — çoklu, en üstte -->
       <div class="size-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg> Beden Seçin <span class="size-hint">(birden fazla seçebilirsiniz)</span></div>
@@ -955,11 +1103,15 @@ function finishIntro(){
 function skipIntro(){ finishIntro(); }
 
 const PRODUCTS = [
-  { name:'TS 61 Tasarım Forma', imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025273/IMG_0439_2_kl4mxv.heic','https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025270/IMG_0440_2_gjy39g.heic'], price:690, desc:'Trabzonspor\'un 61 temalı özel tasarım formasının premium replikası. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli arma ve logolar ile uzun yıllar kullanıma uygundur.' },
-  { name:'TS Adidas Tasarım Forma', imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025269/IMG_0463_2_logll2.heic','https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025274/IMG_0468_2_ic3i6o.heic'], price:690, desc:'Trabzonspor\'un Adidas tasarımlı formasının premium versiyonu. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli detaylar ile uzun yıllar kullanıma uygundur.' },
-  { name:'TS Çubuklu Forma', imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025282/IMG_2195_vkdbv0.jpg','https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025280/IMG_2199_o4lujh.jpg'], price:690, desc:'Trabzonspor\'un çubuklu tasarım formasının premium replikası. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli arma ve logolar ile uzun yıllar kullanıma uygundur.' },
-  { name:'TS Siyah Forma', imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025279/IMG_2216_uasc2v.jpg','https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025275/IMG_2221_hkv9lm.jpg'], price:690, desc:'Trabzonspor\'un siyah temalı özel tasarım formasının premium replikası. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli arma ve logolar ile uzun yıllar kullanıma uygundur.' },
-  { name:'TS Bordo Forma', imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025273/IMG_2269_kt39qn.jpg','https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025274/IMG_2273_yltqgb.jpg'], price:690, desc:'Trabzonspor\'un bordo temalı özel tasarım formasının premium replikası. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli arma ve logolar ile uzun yıllar kullanıma uygundur.' },
+  { name:'TS 61 Tasarım Forma', category:'normal', imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025273/IMG_0439_2_kl4mxv.heic','https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025270/IMG_0440_2_gjy39g.heic'], price:690, desc:'Trabzonspor\'un 61 temalı özel tasarım formasının premium replikası. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli arma ve logolar ile uzun yıllar kullanıma uygundur.' },
+  { name:'TS Adidas Tasarım Forma', category:'normal', imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025269/IMG_0463_2_logll2.heic','https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025274/IMG_0468_2_ic3i6o.heic'], price:690, desc:'Trabzonspor\'un Adidas tasarımlı formasının premium versiyonu. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli detaylar ile uzun yıllar kullanıma uygundur.' },
+  { name:'TS Çubuklu Forma', category:'normal', imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025282/IMG_2195_vkdbv0.jpg','https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025280/IMG_2199_o4lujh.jpg'], price:690, desc:'Trabzonspor\'un çubuklu tasarım formasının premium replikası. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli arma ve logolar ile uzun yıllar kullanıma uygundur.' },
+  { name:'TS Siyah Forma', category:'normal', imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025279/IMG_2216_uasc2v.jpg','https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025275/IMG_2221_hkv9lm.jpg'], price:690, desc:'Trabzonspor\'un siyah temalı özel tasarım formasının premium replikası. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli arma ve logolar ile uzun yıllar kullanıma uygundur.' },
+  { name:'TS Bordo Forma', category:'normal', imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025273/IMG_2269_kt39qn.jpg','https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025274/IMG_2273_yltqgb.jpg'], price:690, desc:'Trabzonspor\'un bordo temalı özel tasarım formasının premium replikası. Forma kumaşından üretilmiş olup herhangi bir solma veya kokma yapmayacağı garanti edilmektedir. Nakış işlemeli arma ve logolar ile uzun yıllar kullanıma uygundur.' },
+  { name:'M.Salah Profesyonel Çubuklu', category:'proSingle', pro:true, imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025281/IMG_2537_2_vkeyvc.png'], price:790, desc:'PROFESYONEL ÜRÜN. M. Salah isim ve numara baskılı, çubuklu forma üzerine profesyonel kalitede uygulanmıştır. Baskı işlemi nedeniyle bu ürün grubunda kargoda 1 gün gecikme/aksama yaşanabilir. Forma kumaşından üretilmiş olup solma veya kokma yapmaz.' },
+  { name:'M.Salah Profesyonel Siyah', category:'proSingle', pro:true, imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025279/IMG_2548_2_grhkyh.png'], price:790, desc:'PROFESYONEL ÜRÜN. M. Salah isim ve numara baskılı, siyah forma üzerine profesyonel kalitede uygulanmıştır. Baskı işlemi nedeniyle bu ürün grubunda kargoda 1 gün gecikme/aksama yaşanabilir. Forma kumaşından üretilmiş olup solma veya kokma yapmaz.' },
+  { name:'M.Salah Profesyonel Bordo', category:'proSingle', pro:true, imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025279/IMG_2547_2_kk374v.png'], price:790, desc:'PROFESYONEL ÜRÜN. M. Salah isim ve numara baskılı, bordo forma üzerine profesyonel kalitede uygulanmıştır. Baskı işlemi nedeniyle bu ürün grubunda kargoda 1 gün gecikme/aksama yaşanabilir. Forma kumaşından üretilmiş olup solma veya kokma yapmaz.' },
+  { name:'Salah Profesyonel Paket', category:'proPackage', pro:true, isPackage:true, imgs:['https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025281/IMG_2537_2_vkeyvc.png','https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025279/IMG_2547_2_kk374v.png','https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025279/IMG_2548_2_grhkyh.png'], price:1900, desc:'PROFESYONEL ÜRÜN. Paket içeriğinde M. Salah isim ve numara baskılı 3 ayrı forma (Çubuklu, Bordo, Siyah) birlikte gönderilir. Baskı işlemi nedeniyle bu ürün grubunda kargoda 1 gün gecikme/aksama yaşanabilir. Seçtiğiniz beden paketteki 3 formanın tamamına uygulanır; farklı beden istiyorsanız sipariş sonrası WhatsApp\'tan bize ulaşabilirsiniz.' },
 ];
 
 let cart=[], modalProd=null, modalIdx=0;
@@ -967,17 +1119,9 @@ let selectedSizes={};
 let swipeX=0, swipeY=0;
 let odemeYontemi=null;
 
-// Fiyat tablosu
-function getTotal(){
-  const q=getTotalQty();
-  const base=q>=2?1300:cart.reduce((s,i)=>s+(i.price*i.qty),0);
-  const kartEki=odemeYontemi==='kart'?50:0;
-  return base+kartEki;
-}
-
+// Fiyat tablosu — normal formalar (2 Al 1 Hediye kampanyası)
 function getPriceTable(q){
-  // 2+1 kampanya mantığı: 2=1300, 3=1800(?), no — kullanıcı tanımladı:
-  // 2 forma: 1300, 4 forma: 1800, 5: 2300, 6: 2850
+  // 2+1 kampanya mantığı: 2 forma: 1300, 4 forma: 1800, 5: 2300, 6: 2850
   if(q<=1)return q*690;
   if(q===2||q===3)return 1300;
   if(q===4)return 1800;
@@ -986,10 +1130,33 @@ function getPriceTable(q){
   return 2850+(q-6)*690; // 7+
 }
 
+// Salah Profesyonel tekli forma — kademeli indirim (4.forma %10, 5.forma %15, 6.forma %20)
+function getProSingleUnitPrice(i){
+  if(i===4)return 790*0.90;
+  if(i===5)return 790*0.85;
+  if(i>=6)return 790*0.80;
+  return 790;
+}
+function getProSingleTotal(q){
+  let total=0;
+  for(let i=1;i<=q;i++) total+=getProSingleUnitPrice(i);
+  return Math.round(total);
+}
+
+function getNormalQty(){return cart.filter(i=>i.category==='normal').reduce((s,i)=>s+i.qty,0);}
+function getProSingleQty(){return cart.filter(i=>i.category==='proSingle').reduce((s,i)=>s+i.qty,0);}
+function getProPackageQty(){return cart.filter(i=>i.category==='proPackage').reduce((s,i)=>s+i.qty,0);}
+
+// Kart fee hariç ara toplam (sepet ve sipariş özetinde kullanılır)
+function getSubtotal(){
+  const normalTotal=getPriceTable(getNormalQty());
+  const proSingleTotal=getProSingleTotal(getProSingleQty());
+  const proPackageTotal=getProPackageQty()*1900;
+  return normalTotal+proSingleTotal+proPackageTotal;
+}
+
 function getTotal(){
-  const q=getTotalQty();
-  const base=getPriceTable(q);
-  return base+(odemeYontemi==='kart'?50:0);
+  return getSubtotal()+(odemeYontemi==='kart'?50:0);
 }
 
 function selectPayment(type){
@@ -1035,6 +1202,10 @@ function openModal(idx){
   document.getElementById('descToggleBtn').textContent='Devamını oku';
   document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('sel'));
   renderSelectedSizes();
+
+  document.getElementById('modalPrice').textContent=modalProd.price.toLocaleString('tr-TR')+' ₺';
+  document.getElementById('modalSubText').textContent=modalProd.pro?'Profesyonel · İsim Baskılı':'Premium · Nakış İşlemeli';
+  document.getElementById('modalProWarning').style.display=modalProd.pro?'block':'none';
 
   const track=document.getElementById('modalTrack');
   track.innerHTML=modalProd.imgs.map(src=>`<div class="modal-slide"><img src="${src}"></div>`).join('');
@@ -1155,7 +1326,7 @@ function addToCart(){
     const key=modalProd.name+'__'+size;
     const ex=cart.find(i=>i.key===key);
     if(ex)ex.qty+=selectedSizes[size];
-    else cart.push({key,name:modalProd.name,img:modalProd.imgs[0],price:modalProd.price,size,qty:selectedSizes[size]});
+    else cart.push({key,name:modalProd.name,img:modalProd.imgs[0],price:modalProd.price,category:modalProd.category,size,qty:selectedSizes[size]});
   });
   haptic(20);
   flyToCart();
@@ -1215,23 +1386,25 @@ function renderCart(){
   const footer=document.getElementById('cartFooter');
   if(!cart.length){items.innerHTML='<div class="cart-empty"><div class="cart-empty-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div><div class="cart-empty-text">Sepetiniz boş</div></div>';footer.style.display='none';return;}
   const tq=getTotalQty();
+  const normalQty=getNormalQty();
+  const proSingleQty=getProSingleQty();
   let html='';
   cart.forEach((item,idx)=>{
     html+=`<div class="cart-item"><img class="ci-img" src="${item.img}"><div class="ci-info"><div class="ci-name">${item.name}</div><div class="ci-size">Beden: ${item.size}</div><div class="ci-row"><div class="ci-price">${item.price} ₺</div><div class="ci-actions"><div class="ci-qty"><button class="ci-qb" onclick="updateQty(${idx},-1)">−</button><div class="ci-qv">${item.qty}</div><button class="ci-qb" onclick="updateQty(${idx},1)">+</button></div><button class="ci-del" onclick="removeItem(${idx})">✕</button></div></div></div></div>`;
   });
-  if(tq>=2)html+=`<div class="camp-bar"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg> <strong>2 Al 1 Hediye aktif!</strong> ${tq>=3?'Hediye forma siparişinize eklenecek.':'Bir forma daha ekle, 3. forma bizden!'}</div>`;
+  if(normalQty>=2)html+=`<div class="camp-bar"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg> <strong>2 Al 1 Hediye aktif!</strong> ${normalQty>=3?'Hediye forma siparişinize eklenecek.':'Bir forma daha ekle, 3. forma bizden!'}</div>`;
+  if(proSingleQty>=4)html+=`<div class="camp-bar"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2H22l-6 4.6L18.4 21 12 16.4 5.6 21 8 13.8l-6-4.6h7.6z"/></svg> <strong>Profesyonel forma indirimi aktif!</strong> 4. forma %10, 5. forma %15, 6. forma %20 indirimli.</div>`;
   if(tq>=6)html+=`<div class="bulk-notice"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg> <strong>Toplu sipariş veriyorsanız</strong> dilerseniz <a href="https://wa.me/905366303654" target="_blank">WhatsApp'tan bize ulaşabilirsiniz</a>, yardımcı olabiliriz!</div>`;
   items.innerHTML=html;
   footer.style.display='block';
-  document.getElementById('cartTotal').textContent=getPriceTable(tq).toLocaleString('tr-TR')+' ₺';
+  document.getElementById('cartTotal').textContent=getSubtotal().toLocaleString('tr-TR')+' ₺';
 }
 
 function updateQty(idx,d){cart[idx].qty=Math.max(1,cart[idx].qty+d);renderCart();}
 function removeItem(idx){cart.splice(idx,1);renderCart();}
 
 function openCheckout(){
-  const tq=getTotalQty();
-  if(tq===2){
+  if(getNormalQty()===2){
     document.getElementById('giftOverlay').classList.add('open');
     document.body.style.overflow='hidden';
     return;
@@ -1255,6 +1428,34 @@ function closeGiftOverlay(){
   document.body.style.overflow='hidden';
 }
 
+let professionalUnlocked=false;
+function openProfessionalGate(){
+  if(professionalUnlocked){
+    document.getElementById('professionalCatalog').scrollIntoView({behavior:'smooth',block:'start'});
+    return;
+  }
+  document.getElementById('proGateOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeProfessionalGate(){
+  document.getElementById('proGateOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function continueProfessional(){
+  professionalUnlocked=true;
+  document.getElementById('proGateOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  const section=document.getElementById('professionalCatalog');
+  section.classList.remove('locked');
+  section.classList.add('unlocked');
+  const cards=section.querySelectorAll('.prod-card');
+  cards.forEach((c,i)=>{
+    c.style.transitionDelay=(i*0.09)+'s';
+  });
+  haptic(20);
+  setTimeout(()=>{ section.scrollIntoView({behavior:'smooth',block:'start'}); },150);
+}
+
 function proceedToCheckout(){closeCart();odemeYontemi=null;document.getElementById('payNakit').classList.remove('selected');document.getElementById('payKart').classList.remove('selected');document.getElementById('paymentWarning').style.display='none';renderOrderSummary();document.getElementById('checkoutOverlay').classList.add('open');document.body.style.overflow='hidden';}
 function closeCheckout(){
   document.getElementById('checkoutOverlay').classList.remove('open');
@@ -1272,8 +1473,7 @@ function closeCheckout(){
 }
 
 function renderOrderSummary(){
-  const tq=getTotalQty();
-  const base=getPriceTable(tq);
+  const base=getSubtotal();
   const kartEki=odemeYontemi==='kart'?50:0;
   const toplam=base+kartEki;
   let html='<div class="os-title">Sipariş Özeti</div>';
@@ -1303,10 +1503,9 @@ async function submitOrder(){
   if(!ad||!tel||!addr.ok){alert('Lütfen tüm zorunlu (*) alanları doldurun.');return;}
   const btn=document.getElementById('chkBtn');
   btn.textContent='Gönderiliyor...';btn.disabled=true;
-  const tq=getTotalQty();
   const toplam=getTotal();
   let urunler=cart.map(i=>`${i.name} ${i.size} x${i.qty}`).join(', ');
-  if(tq>=2)urunler+=' + HEDİYE FORMA';
+  if(getNormalQty()>=2)urunler+=' + HEDİYE FORMA';
   const odeme=odemeYontemi==='kart'?`Kapıda Kart (+50 ₺ pos bedeli)`:'Kapıda Nakit';
   const msg=`🚨 WEBSİTESİ SİPARİŞİ\n\nAd: ${ad}\nTel: ${tel}\nAdres: ${addr.full}\nÜrün: ${urunler}\nÖdeme: ${odeme}\nToplam: ${toplam} ₺`;
   await sendTelegram(msg);
@@ -1355,10 +1554,9 @@ function sendWhatsApp(){
   const tel=document.getElementById('chkTel').value.trim();
   const addr=buildAddress();
   if(!ad||!tel||!addr.ok){alert('Lütfen önce tüm zorunlu alanları doldurun.');return;}
-  const tq=getTotalQty();
   const toplam=getTotal();
   let urunler=cart.map(i=>`${i.name} ${i.size} x${i.qty}`).join(', ');
-  if(tq>=2)urunler+=' + HEDİYE FORMA';
+  if(getNormalQty()>=2)urunler+=' + HEDİYE FORMA';
   const odeme=odemeYontemi==='kart'?'Kapıda Kart (+50₺)':'Kapıda Nakit';
   const msg=encodeURIComponent(`🛍️ Sipariş\n\nAd: ${ad}\nTel: ${tel}\nAdres: ${addr.full}\nÜrün: ${urunler}\nÖdeme: ${odeme}\nToplam: ${toplam} ₺`);
   window.open('https://wa.me/905366303654?text='+msg,'_blank');
@@ -1403,11 +1601,13 @@ function toggleSSS(btn){
 
 // === SON SİPARİŞ BİLDİRİMİ ===
 const notifData=[
-  {name:'TS 61 Tasarım · L beden', city:'Trabzon', img:'https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025273/IMG_0439_2_kl4mxv.heic'},
-  {name:'TS Adidas Tasarım · M beden', city:'İstanbul', img:'https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025269/IMG_0463_2_logll2.heic'},
-  {name:'TS 61 Tasarım · M beden', city:'İzmir', img:'https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025273/IMG_0439_2_kl4mxv.heic'},
-  {name:'TS Çubuklu Forma · L beden', city:'Bursa', img:'https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025282/IMG_2195_vkdbv0.jpg'},
-  {name:'TS Siyah Forma · XL beden', city:'Ankara', img:'https://res.cloudinary.com/dk0oupmu0/image/upload/v1786025279/IMG_2216_uasc2v.jpg'},
+  {name:'TS 61 Tasarım · L beden', city:'Trabzon', img:'https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025273/IMG_0439_2_kl4mxv.heic'},
+  {name:'TS Adidas Tasarım · M beden', city:'İstanbul', img:'https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025269/IMG_0463_2_logll2.heic'},
+  {name:'TS Çubuklu Forma · L beden', city:'Bursa', img:'https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025282/IMG_2195_vkdbv0.jpg'},
+  {name:'TS Siyah Forma · XL beden', city:'Ankara', img:'https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025279/IMG_2216_uasc2v.jpg'},
+  {name:'TS Bordo Forma · M beden', city:'İzmir', img:'https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025273/IMG_2269_kt39qn.jpg'},
+  {name:'M.Salah Profesyonel Çubuklu · L beden', city:'Trabzon', img:'https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025281/IMG_2537_2_vkeyvc.png'},
+  {name:'Salah Profesyonel Paket · M beden', city:'İstanbul', img:'https://res.cloudinary.com/dk0oupmu0/image/upload/f_auto,q_auto/v1786025281/IMG_2537_2_vkeyvc.png'},
 ];
 let notifIdx=0;
 function showOrderNotif(){
